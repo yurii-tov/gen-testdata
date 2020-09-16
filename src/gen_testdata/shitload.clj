@@ -22,12 +22,8 @@
 
 
 (defn gen-group [& {:keys [students-count
-                           class-id
-                           parallel
-                           class-name]}]
+                       class-id]}]
   (let [class-id (or class-id (gen-guid))
-        parallel (or parallel "1")
-        class-name (or class-name (gen-guid))
         presence-period-start "2020-06-01"
         teacher {:tag :user
                  :attrs {:gender "М"
@@ -65,11 +61,15 @@
     (cons teacher (take students-count (repeatedly gen-student)))))
 
 
-(defn gen-journal [{:keys [class_id term_id subject_id tutor_id]}]
-  (let [guid (gen-guid)]
-    (format "<journal markscale_id=\"507f4400-327f-11e3-aa6e-0800200c9a66\" id=\"%s\" term_id=\"%s\" class_id=\"%s\" subject_id=\"%s\" tutor_id=\"%s\"/>"
-            guid
-            term_id
-            class_id
-            subject_id
-            tutor_id)))
+(defn gen-journal [& {:keys [class-id
+                         term-id
+                         subject-id
+                         tutor-id]}]
+  {:tag :journal
+   :attrs {:tutor_id tutor-id
+           :subject_id subject-id
+           :class_id class-id
+           :term_id term-id
+           :id (gen-guid)
+           :markscale_id "507f4400-327f-11e3-aa6e-0800200c9a66"}
+   :content nil})
