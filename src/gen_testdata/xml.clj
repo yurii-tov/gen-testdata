@@ -3,7 +3,7 @@
             [clojure.xml :as xml]))
 
 
-(defn print-element [x]
+(defn print-xml [x]
   (println (-> (with-out-str
                  (xml/emit-element x))
                (cstr/replace #"\r?\n" "")

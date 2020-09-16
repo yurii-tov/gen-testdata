@@ -1,7 +1,7 @@
 (ns gen-testdata.shitload
   "Generate piles of XML to import into 1C:Education"
   (:require [gen-testdata.user-import :refer [names]]
-            [gen-testdata.xml :refer [print-element]])
+            [gen-testdata.xml :refer [print-xml]])
   (:import java.util.UUID))
 
 
