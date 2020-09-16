@@ -22,7 +22,7 @@
 
 
 (defn gen-group [& {:keys [students-count
-                       class-id]}]
+                           class-id]}]
   (let [class-id (or class-id (gen-guid))
         presence-period-start "2020-06-01"
         teacher {:tag :user
@@ -62,9 +62,9 @@
 
 
 (defn gen-journal [& {:keys [class-id
-                         term-id
-                         subject-id
-                         tutor-id]}]
+                             term-id
+                             subject-id
+                             tutor-id]}]
   {:tag :journal
    :attrs {:tutor_id tutor-id
            :subject_id subject-id
